@@ -518,7 +518,9 @@ resource "kubernetes_service" "this" {
       app    = "nginx-ingress-controller"
     }
 
-    type                    = var.service_type
-    external_traffic_policy = var.service_external_traffic_policy
+    type                        = var.service_type
+    external_traffic_policy     = var.service_external_traffic_policy
+    load_balancer_ip            = var.service_load_balancer_ip
+    load_balancer_source_ranges = var.service_load_balancer_source_ranges
   }
 }

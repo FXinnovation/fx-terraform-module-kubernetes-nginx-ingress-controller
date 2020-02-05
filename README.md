@@ -53,6 +53,8 @@ Terraform module to deploy nginx-ingress-controller on kubernetes.
 | service\_annotations | Map of annotations to apply to the service. | `map` | `{}` | no |
 | service\_external\_traffic\_policy | The external traffic policy for the service. | `string` | `"Local"` | no |
 | service\_labels | Map of labels to apply to the service. | `map` | `{}` | no |
+| service\_load\_balancer\_ip | IP address to be used for the service. | `string` | n/a | yes |
+| service\_load\_balancer\_source\_ranges | List of source ranges that will be allowed access to the load balancer. | `list(string)` | n/a | yes |
 | service\_name | Name of the service to create for nginx-ingress-controller. | `string` | `"ingress-nginx"` | no |
 | service\_type | Type of service to create for the nginx-ingress-controller. | `string` | `"LoadBalancer"` | no |
 | tcp\_services\_annotations | Map of annotations to apply to the tcp\_services config map. | `map` | `{}` | no |

@@ -257,6 +257,18 @@ variable "service_labels" {
   default     = {}
 }
 
+variable "service_load_balancer_ip" {
+  description = "IP address to be used for the service."
+  type        = string
+  default     = null
+}
+
+variable "service_load_balancer_source_ranges" {
+  description = "List of source ranges that will be allowed access to the load balancer."
+  type        = list(string)
+  default     = null
+}
+
 variable "service_type" {
   description = "Type of service to create for the nginx-ingress-controller."
   default     = "LoadBalancer"
