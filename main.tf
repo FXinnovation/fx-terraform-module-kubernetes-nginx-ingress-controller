@@ -1,10 +1,4 @@
 #####
-# Provider
-#####
-
-provider "kubernetes" {}
-
-#####
 # Randoms
 #####
 
