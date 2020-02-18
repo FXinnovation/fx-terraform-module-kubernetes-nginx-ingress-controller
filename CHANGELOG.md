@@ -1,4 +1,10 @@
 
+0.1.1 / 2020-02-18
+==================
+
+  * fix: Examples were not working
+  * fix: remove kubernetes provider definition
+
 0.1.0 / 2019-12-02
 ==================
 

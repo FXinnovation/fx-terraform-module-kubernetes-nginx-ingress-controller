@@ -1,53 +1,73 @@
-provider "aws" {
-  version    = "~> 2.27.0"
-  region     = "us-east-2"
-  access_key = var.access_key
-  secret_key = var.secret_key
+#####
+# Providers
+#####
+
+provider "azurerm" {
+  version         = "1.28.0"
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
 }
 
 provider "random" {
-  version = "~> 2.0"
+  version = "~> 2"
 }
 
 provider "kubernetes" {
-  host                   = data.aws_eks_cluster.this.endpoint
-  cluster_ca_certificate = base64decode(data.aws_eks_cluster.this.certificate_authority.0.data)
-  token                  = data.aws_eks_cluster_auth.this.token
-  load_config_file       = false
-  version                = "~> 1.9"
+  version                = "1.10.0"
+  host                   = module.aks_cluster.kube_config.0.host
+  username               = module.aks_cluster.kube_config.0.username
+  password               = module.aks_cluster.kube_config.0.password
+  client_certificate     = base64decode(module.aks_cluster.kube_config.0.client_certificate)
+  client_key             = base64decode(module.aks_cluster.kube_config.0.client_key)
+  cluster_ca_certificate = base64decode(module.aks_cluster.kube_config.0.cluster_ca_certificate)
 }
 
-data "aws_eks_cluster_auth" "this" {
-  name = "fxinnovation-validation-cluster"
-}
+#####
+# Randoms
+#####
 
-data "aws_eks_cluster" "this" {
-  name = "fxinnovation-validation-cluster"
-}
-
-data "aws_vpc" "default" {
-  default = true
-}
-
-data "aws_subnet_ids" "this" {
-  vpc_id = data.aws_vpc.default.id
-}
-
-resource "random_string" "this" {
-  length  = 8
-  special = false
+resource "random_string" "default" {
   upper   = false
   number  = false
+  special = false
+  length  = 8
 }
 
+#####
+# Context
+#####
+
+module "aks_cluster" {
+  source = "git::https://git@scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azurerm-aks.git?ref=0.1.0"
+
+  resource_group_name                   = random_string.default.result
+  location                              = "canadacentral"
+  name                                  = random_string.default.result
+  kubernetes_version                    = "1.13.5"
+  dns_prefix                            = "kubernetes"
+  log_analytics_workspace_name          = random_string.default.result
+  log_analytics_workspace_sku           = "free"
+  log_analytics_workspace_retentionDays = 30
+  rbac_enabled                          = true
+  agent_pool_profiles = [
+    {
+      name            = "tftestaks"
+      count           = 1
+      vm_size         = "Standard_D2_v2"
+      os_type         = "Linux"
+      os_disk_size_gb = 30
+    }
+  ]
+}
+
+#####
+# default example
+#####
+
 module "default" {
-  source = "../../"
+  source = "../.."
 
-  providers = {
-    kubernetes = kubernetes
-  }
-
-  namespace_name = "nginx-ingress-${random_string.this.result}"
-
-  node_selector = {}
+  namespace_name = random_string.default.result
 }

@@ -1,9 +1,15 @@
-variable "access_key" {
-  description = "Credentials: AWS access key."
-  type        = string
+variable "client_id" {
+  type = string
 }
 
-variable "secret_key" {
-  description = "Credentials: AWS secret key. Pass this as a variable, never write password in the code."
-  type        = string
+variable "client_secret" {
+  type = string
+}
+
+variable "subscription_id" {
+  type = string
+}
+
+variable "tenant_id" {
+  type = string
 }
