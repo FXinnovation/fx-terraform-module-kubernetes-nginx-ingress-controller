@@ -2,6 +2,7 @@
 0.1.1 / 2020-02-18
 ==================
 
+  * fix: Remove useless files in example
   * fix: Examples were not working
   * fix: remove kubernetes provider definition
 
