@@ -2,6 +2,7 @@
 0.1.1 / 2020-02-18
 ==================
 
+  * fix: Add versions.tf file
   * tech: Define license correctly
   * fix: Remove useless files in example
   * fix: Examples were not working
