@@ -310,6 +310,7 @@ resource "kubernetes_daemonset" "speaker" {
           port {
             name           = "monitoring"
             container_port = 7472
+            host_port      = 7472
           }
 
           env {

@@ -2,6 +2,8 @@
 0.3.0 / 2020-03-30
 ==================
 
+  * tech: fix example replay
+  * tech: Make tests pass by using MetalLb Shim
   * tech: Use KinD to run tests
   * feat: Add output for load_balancer_ingress
 
