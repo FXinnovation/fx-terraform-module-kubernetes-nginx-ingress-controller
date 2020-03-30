@@ -27,3 +27,8 @@ output "udp_services_name" {
   description = "Name of the udp_services config map created by this module."
   value       = var.udp_services_name
 }
+
+output "load_balancer_ingress" {
+  description = "List of ingress points for the load-balancer."
+  value       = kubernetes_service.this.load_balancer_ingress
+}

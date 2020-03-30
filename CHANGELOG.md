@@ -1,5 +1,10 @@
 
-0.2.0 / 2020-02-18
+0.3.0 / 2020-03-30
+==================
+
+  * feat: Add output for load_balancer_ingress
+
+0.2.0 / 2020-02-05
 ==================
 
   * feat: Add load balancer ip and source ranges

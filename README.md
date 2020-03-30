@@ -69,6 +69,7 @@ Terraform module to deploy nginx-ingress-controller on kubernetes.
 | Name | Description |
 |------|-------------|
 | deployment\_name | Name of the deployment created by this module. |
+| load\_balancer\_ingress | List of ingress points for the load-balancer. |
 | namespace | Namespace in which the module is deployed. |
 | nginx\_configuration\_name | Name of the nginx configuration config map created by this module. |
 | service\_name | Name of the service created by this module. |
