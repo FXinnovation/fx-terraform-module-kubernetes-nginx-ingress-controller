@@ -2,6 +2,7 @@
 0.3.0 / 2020-03-30
 ==================
 
+  * tech: Use KinD to run tests
   * feat: Add output for load_balancer_ingress
 
 0.2.0 / 2020-02-05
