@@ -350,8 +350,7 @@ resource "kubernetes_deployment" "this" {
 
     selector {
       match_labels = {
-        app    = "nginx-ingress-controller"
-        random = random_string.selector.result
+        selector = "nginx-ingress-controller-${random_string.selector.result}"
       }
     }
 
@@ -363,17 +362,16 @@ resource "kubernetes_deployment" "this" {
             "prometheus.io/port"   = "${local.controller_port}"
           },
           var.annotations,
-          var.deployment_annotations
+          var.deployment_template_annotations
         )
         labels = merge(
           {
             "app.kubernetes.io/instance" = var.deployment_name
-            random                       = random_string.selector.result
-            app                          = "nginx-ingress-controller"
+            selector                     = "nginx-ingress-controller-${random_string.selector.result}"
           },
           local.labels,
           var.labels,
-          var.deployment_labels
+          var.deployment_template_labels
         )
       }
 
@@ -526,8 +524,7 @@ resource "kubernetes_service" "this" {
     }
 
     selector = {
-      random = random_string.selector.result
-      app    = "nginx-ingress-controller"
+      selector = "nginx-ingress-controller-${random_string.selector.result}"
     }
 
     type                        = var.service_type
