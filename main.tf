@@ -21,6 +21,7 @@ locals {
     "app.kubernetes.io/managed-by" = "terraform"
     "app.kubernetes.io/name"       = "ingress-nginx"
   }
+  controller_port = 10254
 }
 
 #####
@@ -357,6 +358,10 @@ resource "kubernetes_deployment" "this" {
     template {
       metadata {
         annotations = merge(
+          {
+            "prometheus.io/scrape" = "true"
+            "prometheus.io/port"   = "${local.controller_port}"
+          },
           var.annotations,
           var.deployment_annotations
         )
@@ -402,6 +407,13 @@ resource "kubernetes_deployment" "this" {
             protocol       = "TCP"
           }
 
+          port {
+            name           = "metrics"
+            container_port = local.controller_port
+            host_port      = var.controller_host_port
+            protocol       = "TCP"
+          }
+
           env {
             name = "POD_NAME"
             value_from {
@@ -423,7 +435,7 @@ resource "kubernetes_deployment" "this" {
           liveness_probe {
             http_get {
               path   = "/healthz"
-              port   = "10254"
+              port   = local.controller_port
               scheme = "HTTP"
             }
 
@@ -437,7 +449,7 @@ resource "kubernetes_deployment" "this" {
           readiness_probe {
             http_get {
               path   = "/healthz"
-              port   = "10254"
+              port   = local.controller_port
               scheme = "HTTP"
             }
 

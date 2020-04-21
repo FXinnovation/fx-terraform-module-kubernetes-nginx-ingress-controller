@@ -238,6 +238,12 @@ variable "node_selector" {
   }
 }
 
+variable "controller_host_port" {
+  description = "Port number on which the controller will be available on the host (0-65536)"
+  default     = null
+  type        = number
+}
+
 #####
 # Service
 #####

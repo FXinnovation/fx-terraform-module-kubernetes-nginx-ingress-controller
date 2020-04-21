@@ -1,4 +1,9 @@
 
+0.4.0 / 2020-04-21
+==================
+
+  * feat: Add metrics port to be able to scrape metrics
+
 0.3.0 / 2020-03-30
 ==================
 
