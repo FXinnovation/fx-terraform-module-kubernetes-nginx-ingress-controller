@@ -1,31 +1,45 @@
 output "namespace" {
-  description = "Namespace in which the module is deployed."
-  value       = var.namespace_name
+  value = kubernetes_namespace.this
 }
 
-output "deployment_name" {
-  description = "Name of the deployment created by this module."
-  value       = var.deployment_name
+output "deployment" {
+  value = kubernetes_deployment.this
 }
 
-output "service_name" {
-  description = "Name of the service created by this module."
-  value       = var.service_name
+output "service" {
+  value = kubernetes_service.this
 }
 
-output "nginx_configuration_name" {
-  description = "Name of the nginx configuration config map created by this module."
-  value       = var.nginx_configuration_name
+output "service_account" {
+  value = kubernetes_service_account.this
 }
 
-output "tcp_services_name" {
-  description = "Name of the tcp_services config map created by this module."
-  value       = var.tcp_services_name
+output "cluster_role" {
+  value = kubernetes_cluster_role.this
 }
 
-output "udp_services_name" {
-  description = "Name of the udp_services config map created by this module."
-  value       = var.udp_services_name
+output "cluster_role_binding" {
+  value = kubernetes_cluster_role_binding.this
+}
+
+output "role" {
+  value = kubernetes_role.this
+}
+
+output "role_binding" {
+  value = kubernetes_role_binding.this
+}
+
+output "config_map_nginx_configuration" {
+  value = kubernetes_config_map.nginx_configuration
+}
+
+output "config_map_tcp_services" {
+  value = kubernetes_config_map.tcp_services
+}
+
+output "config_map_udp_services" {
+  value = kubernetes_config_map.udp_services
 }
 
 output "load_balancer_ingress" {

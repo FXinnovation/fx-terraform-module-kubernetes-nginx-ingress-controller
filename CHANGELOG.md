@@ -1,7 +1,8 @@
 
-0.4.0 / 2020-04-21
+1.0.0 / 2020-04-21
 ==================
 
+  * breaking: Change outputs, add more outputs, outputs
   * feat: Change selector to match new pattern
   * feat: Add metrics port to be able to scrape metrics
 

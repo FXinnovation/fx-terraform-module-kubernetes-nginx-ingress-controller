@@ -37,6 +37,8 @@ Terraform module to deploy nginx-ingress-controller on kubernetes.
 | deployment\_annotations | Map of annotations to apply to the deployment. | `map` | `{}` | no |
 | deployment\_labels | Map of labels to apply to the deployment. | `map` | `{}` | no |
 | deployment\_name | Name of the deployment to create for nginx-ingress-controller. | `string` | `"ingress-nginx"` | no |
+| deployment\_template\_annotations | Map of annotations to apply to the deployment template. | `map` | `{}` | no |
+| deployment\_template\_labels | Map of labels to apply to the deployment template. | `map` | `{}` | no |
 | election\_id | Election id to use for Ingress status updates. | `string` | `"ingress-controller-leader"` | no |
 | image\_name | Name of the image to use. | `string` | `"quay.io/kubernetes-ingress-controller/nginx-ingress-controller"` | no |
 | image\_version | Version of the image to use. | `string` | `"0.26.1"` | no |
@@ -77,12 +79,17 @@ Terraform module to deploy nginx-ingress-controller on kubernetes.
 
 | Name | Description |
 |------|-------------|
-| deployment\_name | Name of the deployment created by this module. |
+| cluster\_role | n/a |
+| cluster\_role\_binding | n/a |
+| config\_map\_nginx\_configuration | n/a |
+| config\_map\_tcp\_services | n/a |
+| config\_map\_udp\_services | n/a |
+| deployment | n/a |
 | load\_balancer\_ingress | List of ingress points for the load-balancer. |
-| namespace | Namespace in which the module is deployed. |
-| nginx\_configuration\_name | Name of the nginx configuration config map created by this module. |
-| service\_name | Name of the service created by this module. |
-| tcp\_services\_name | Name of the tcp\_services config map created by this module. |
-| udp\_services\_name | Name of the udp\_services config map created by this module. |
+| namespace | n/a |
+| role | n/a |
+| role\_binding | n/a |
+| service | n/a |
+| service\_account | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

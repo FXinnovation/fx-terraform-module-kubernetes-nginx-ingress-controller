@@ -196,6 +196,16 @@ variable "deployment_labels" {
   default     = {}
 }
 
+variable "deployment_template_annotations" {
+  description = "Map of annotations to apply to the deployment template."
+  default     = {}
+}
+
+variable "deployment_template_labels" {
+  description = "Map of labels to apply to the deployment template."
+  default     = {}
+}
+
 variable "replicas" {
   description = "Number of replica's to deploy."
   default     = 3
