@@ -2,6 +2,7 @@
 1.0.0 / 2020-04-21
 ==================
 
+  * tech: Change labels
   * breaking: Change outputs, add more outputs, outputs
   * feat: Change selector to match new pattern
   * feat: Add metrics port to be able to scrape metrics

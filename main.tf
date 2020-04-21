@@ -16,10 +16,11 @@ resource "random_string" "selector" {
 locals {
   annotations = {}
   labels = {
-    "app.kubernetes.io/version"    = var.image_version
-    "app.kubernetes.io/part-of"    = "ingress-nginx"
-    "app.kubernetes.io/managed-by" = "terraform"
-    "app.kubernetes.io/name"       = "ingress-nginx"
+    "version"    = var.image_version
+    "part-of"    = "network"
+    "managed-by" = "terraform"
+    "name"       = "nginx-ingress-controller"
+    "component"  = "ingress-controller"
   }
   controller_port = 10254
 }
@@ -60,8 +61,7 @@ resource "kubernetes_config_map" "nginx_configuration" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance"  = var.nginx_configuration_name
-        "app.kubernetes.io/component" = "configuration"
+        "instance" = var.nginx_configuration_name
       },
       local.labels,
       var.labels,
@@ -83,8 +83,7 @@ resource "kubernetes_config_map" "tcp_services" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance"  = var.tcp_services_name
-        "app.kubernetes.io/component" = "configuration"
+        "instance" = var.tcp_services_name
       },
       local.labels,
       var.labels,
@@ -106,8 +105,7 @@ resource "kubernetes_config_map" "udp_services" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance"  = var.udp_services_name
-        "app.kubernetes.io/component" = "configuration"
+        "instance" = var.udp_services_name
       },
       local.labels,
       var.labels,
@@ -132,8 +130,7 @@ resource "kubernetes_service_account" "this" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance"  = var.service_account_name
-        "app.kubernetes.io/component" = "security"
+        "instance" = var.service_account_name
       },
       local.labels,
       var.labels,
@@ -158,8 +155,7 @@ resource "kubernetes_cluster_role" "this" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance"  = var.cluster_role_name
-        "app.kubernetes.io/component" = "security"
+        "instance" = var.cluster_role_name
       },
       local.labels,
       var.labels,
@@ -214,8 +210,7 @@ resource "kubernetes_cluster_role_binding" "this" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance"  = var.cluster_role_binding_name
-        "app.kubernetes.io/component" = "security"
+        "instance" = var.cluster_role_binding_name
       },
       local.labels,
       var.labels,
@@ -252,8 +247,7 @@ resource "kubernetes_role" "this" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance"  = var.role_name
-        "app.kubernetes.io/component" = "security"
+        "instance" = var.role_name
       },
       local.labels,
       var.labels,
@@ -298,8 +292,7 @@ resource "kubernetes_role_binding" "this" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance"  = var.role_binding_name
-        "app.kubernetes.io/component" = "security"
+        "instance" = var.role_binding_name
       },
       local.labels,
       var.labels,
@@ -336,8 +329,7 @@ resource "kubernetes_deployment" "this" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance"  = var.deployment_name
-        "app.kubernetes.io/component" = "nginx"
+        "instance" = var.deployment_name
       },
       local.labels,
       var.labels,
@@ -366,8 +358,8 @@ resource "kubernetes_deployment" "this" {
         )
         labels = merge(
           {
-            "app.kubernetes.io/instance" = var.deployment_name
-            selector                     = "nginx-ingress-controller-${random_string.selector.result}"
+            "instance" = var.deployment_name
+            selector   = "nginx-ingress-controller-${random_string.selector.result}"
           },
           local.labels,
           var.labels,
@@ -502,7 +494,7 @@ resource "kubernetes_service" "this" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance" = var.service_name
+        "instance" = var.service_name
       },
       local.labels,
       var.labels,
