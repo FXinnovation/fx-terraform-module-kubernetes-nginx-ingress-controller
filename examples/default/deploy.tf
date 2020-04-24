@@ -503,3 +503,14 @@ module "default" {
 
   namespace_name = random_string.default.result
 }
+
+#####
+# disabled example
+#####
+
+module "disabled" {
+  source = "../.."
+
+  enabled        = false
+  namespace_name = "disabled"
+}

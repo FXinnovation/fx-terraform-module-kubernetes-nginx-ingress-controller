@@ -30,6 +30,8 @@ locals {
 #####
 
 resource "kubernetes_namespace" "this" {
+  count = var.enabled ? 1 : 0
+
   metadata {
     name = var.namespace_name
     annotations = merge(
@@ -50,6 +52,7 @@ resource "kubernetes_namespace" "this" {
 #####
 
 resource "kubernetes_config_map" "nginx_configuration" {
+  count = var.enabled ? 1 : 0
   metadata {
     name      = var.nginx_configuration_name
     namespace = kubernetes_namespace.this.metadata.0.name
@@ -72,6 +75,8 @@ resource "kubernetes_config_map" "nginx_configuration" {
 }
 
 resource "kubernetes_config_map" "tcp_services" {
+  count = var.enabled ? 1 : 0
+
   metadata {
     name      = var.tcp_services_name
     namespace = kubernetes_namespace.this.metadata.0.name
@@ -94,6 +99,8 @@ resource "kubernetes_config_map" "tcp_services" {
 }
 
 resource "kubernetes_config_map" "udp_services" {
+  count = var.enabled ? 1 : 0
+
   metadata {
     name      = var.udp_services_name
     namespace = kubernetes_namespace.this.metadata.0.name
@@ -120,6 +127,8 @@ resource "kubernetes_config_map" "udp_services" {
 #####
 
 resource "kubernetes_service_account" "this" {
+  count = var.enabled ? 1 : 0
+
   metadata {
     name      = var.service_account_name
     namespace = kubernetes_namespace.this.metadata.0.name
@@ -146,6 +155,8 @@ resource "kubernetes_service_account" "this" {
 #####
 
 resource "kubernetes_cluster_role" "this" {
+  count = var.enabled ? 1 : 0
+
   metadata {
     name = var.cluster_role_name
     annotations = merge(
@@ -201,6 +212,8 @@ resource "kubernetes_cluster_role" "this" {
 }
 
 resource "kubernetes_cluster_role_binding" "this" {
+  count = var.enabled ? 1 : 0
+
   metadata {
     name = var.cluster_role_binding_name
     annotations = merge(
@@ -237,6 +250,8 @@ resource "kubernetes_cluster_role_binding" "this" {
 #####
 
 resource "kubernetes_role" "this" {
+  count = var.enabled ? 1 : 0
+
   metadata {
     name      = var.role_name
     namespace = kubernetes_namespace.this.metadata.0.name
@@ -282,6 +297,8 @@ resource "kubernetes_role" "this" {
 }
 
 resource "kubernetes_role_binding" "this" {
+  count = var.enabled ? 1 : 0
+
   metadata {
     name      = var.role_binding_name
     namespace = kubernetes_namespace.this.metadata.0.name
@@ -319,6 +336,8 @@ resource "kubernetes_role_binding" "this" {
 #####
 
 resource "kubernetes_deployment" "this" {
+  count = var.enabled ? 1 : 0
+
   metadata {
     name      = var.deployment_name
     namespace = kubernetes_namespace.this.metadata.0.name
@@ -484,6 +503,8 @@ resource "kubernetes_deployment" "this" {
 #####
 
 resource "kubernetes_service" "this" {
+  count = var.enabled ? 1 : 0
+
   metadata {
     name      = var.service_name
     namespace = kubernetes_namespace.this.metadata.0.name

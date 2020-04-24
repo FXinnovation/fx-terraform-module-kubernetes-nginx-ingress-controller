@@ -40,6 +40,7 @@ Terraform module to deploy nginx-ingress-controller on kubernetes.
 | deployment\_template\_annotations | Map of annotations to apply to the deployment template. | `map` | `{}` | no |
 | deployment\_template\_labels | Map of labels to apply to the deployment template. | `map` | `{}` | no |
 | election\_id | Election id to use for Ingress status updates. | `string` | `"ingress-controller-leader"` | no |
+| enabled | Whether or not to enable this module. | `bool` | `true` | no |
 | image\_name | Name of the image to use. | `string` | `"quay.io/kubernetes-ingress-controller/nginx-ingress-controller"` | no |
 | image\_version | Version of the image to use. | `string` | `"0.26.1"` | no |
 | ingress\_class | Name of the ingress class this controller satisfies. The class of an Ingress object is set using the annotation "kubernetes.io/ingress.class". | `string` | `"nginx"` | no |
@@ -85,7 +86,6 @@ Terraform module to deploy nginx-ingress-controller on kubernetes.
 | config\_map\_tcp\_services | n/a |
 | config\_map\_udp\_services | n/a |
 | deployment | n/a |
-| load\_balancer\_ingress | List of ingress points for the load-balancer. |
 | namespace | n/a |
 | role | n/a |
 | role\_binding | n/a |

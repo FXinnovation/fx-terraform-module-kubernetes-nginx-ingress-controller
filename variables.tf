@@ -7,6 +7,11 @@ variable "annotations" {
   default     = {}
 }
 
+variable "enabled" {
+  description = "Whether or not to enable this module."
+  default     = true
+}
+
 variable "labels" {
   description = "Map of labels that will be merged with all other labels on all kubernetes resource."
   default     = {}

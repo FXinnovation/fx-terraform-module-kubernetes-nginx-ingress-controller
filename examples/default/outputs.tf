@@ -41,7 +41,3 @@ output "config_map_tcp_services" {
 output "config_map_udp_services" {
   value = module.default.config_map_udp_services
 }
-
-output "load_balancer_ingress" {
-  value = module.default.load_balancer_ingress
-}
