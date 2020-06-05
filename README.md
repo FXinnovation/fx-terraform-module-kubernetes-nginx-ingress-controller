@@ -48,6 +48,7 @@ Terraform module to deploy nginx-ingress-controller on kubernetes.
 | namespace\_labels | Map of labels to apply to the namespace. | `map` | `{}` | no |
 | namespace\_name | Name of the namespace to create and deploy the nginx-ingress-controller. \*Note: This is an opinianated choice of forcing the nginx-ingress-controller to run in it's own namespace.\* | `string` | `"ingress-nginx"` | no |
 | nginx\_configuration\_annotations | Map of annotations to apply to the nginx\_configuration config map. | `map` | `{}` | no |
+| nginx\_configuration\_data | Map representing the configuration for nginx-ingress-controller. | `map` | `{}` | no |
 | nginx\_configuration\_labels | Map of labels to apply to the nginx\_configuration config map. | `map` | `{}` | no |
 | nginx\_configuration\_name | Name of the nginx\_configuration config map to create. | `string` | `"nginx-configuration"` | no |
 | node\_selector | Map of key value that will be used to select appropriate nodes | `map` | <pre>{<br>  "kubernetes.io/os": "linux"<br>}</pre> | no |
@@ -69,9 +70,11 @@ Terraform module to deploy nginx-ingress-controller on kubernetes.
 | service\_name | Name of the service to create for nginx-ingress-controller. | `string` | `"ingress-nginx"` | no |
 | service\_type | Type of service to create for the nginx-ingress-controller. | `string` | `"LoadBalancer"` | no |
 | tcp\_services\_annotations | Map of annotations to apply to the tcp\_services config map. | `map` | `{}` | no |
+| tcp\_services\_data | Map representing the tcp services configuration for nginx-ingress-configuration. | `map` | `{}` | no |
 | tcp\_services\_labels | Map of labels to apply to the tcp\_services config map. | `map` | `{}` | no |
 | tcp\_services\_name | Name of the tcp\_services config map to create. | `string` | `"tcp-services"` | no |
 | udp\_services\_annotations | Map of annotations to apply to the udp\_services config map. | `map` | `{}` | no |
+| udp\_services\_data | Map representing the tcp services configuration for nginx-ingress-configuration. | `map` | `{}` | no |
 | udp\_services\_labels | Map of labels to apply to the udp\_services config map. | `map` | `{}` | no |
 | udp\_services\_name | Name of the udp\_services config map to create. | `string` | `"udp-services"` | no |
 

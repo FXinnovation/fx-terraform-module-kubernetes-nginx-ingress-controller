@@ -1,3 +1,7 @@
+1.1.0
+=====
+
+  * feat: Allowing user to actually passing configuration as variables
 
 1.0.0 / 2020-04-21
 ==================

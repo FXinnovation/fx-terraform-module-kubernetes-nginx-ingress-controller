@@ -69,6 +69,8 @@ resource "kubernetes_config_map" "nginx_configuration" {
       var.nginx_configuration_labels
     )
   }
+
+  data = var.nginx_configuration_data
 }
 
 resource "kubernetes_config_map" "tcp_services" {
@@ -91,6 +93,8 @@ resource "kubernetes_config_map" "tcp_services" {
       var.tcp_services_labels
     )
   }
+
+  data = var.tcp_services_data
 }
 
 resource "kubernetes_config_map" "udp_services" {
@@ -113,6 +117,8 @@ resource "kubernetes_config_map" "udp_services" {
       var.udp_services_labels
     )
   }
+
+  data = var.udp_services_data
 }
 
 #####

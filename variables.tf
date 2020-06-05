@@ -60,6 +60,11 @@ variable "nginx_configuration_labels" {
   default     = {}
 }
 
+variable "nginx_configuration_data" {
+  description = "Map representing the configuration for nginx-ingress-controller."
+  default     = {}
+}
+
 variable "tcp_services_name" {
   description = "Name of the tcp_services config map to create."
   default     = "tcp-services"
@@ -75,6 +80,11 @@ variable "tcp_services_labels" {
   default     = {}
 }
 
+variable "tcp_services_data" {
+  description = "Map representing the tcp services configuration for nginx-ingress-configuration."
+  default     = {}
+}
+
 variable "udp_services_name" {
   description = "Name of the udp_services config map to create."
   default     = "udp-services"
@@ -87,6 +97,11 @@ variable "udp_services_annotations" {
 
 variable "udp_services_labels" {
   description = "Map of labels to apply to the udp_services config map."
+  default     = {}
+}
+
+variable "udp_services_data" {
+  description = "Map representing the tcp services configuration for nginx-ingress-configuration."
   default     = {}
 }
 
