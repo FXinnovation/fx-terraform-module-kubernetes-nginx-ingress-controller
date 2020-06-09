@@ -82,12 +82,14 @@ Terraform module to deploy nginx-ingress-controller on kubernetes.
 
 | Name | Description |
 |------|-------------|
+| annotation\_prefix | Annotation prefix to be used by this ingress controller. |
 | cluster\_role | n/a |
 | cluster\_role\_binding | n/a |
 | config\_map\_nginx\_configuration | n/a |
 | config\_map\_tcp\_services | n/a |
 | config\_map\_udp\_services | n/a |
 | deployment | n/a |
+| ingress\_class | Ingress-class to be used by this ingress controller. |
 | load\_balancer\_ingress | List of ingress points for the load-balancer. |
 | namespace | n/a |
 | role | n/a |

@@ -1,3 +1,9 @@
+1.2.0
+=====
+
+  * chore: Update pre-commit config
+  * feat: Add outputs for better dependency management
+
 1.1.0
 =====
 

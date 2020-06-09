@@ -331,7 +331,11 @@ resource "kubernetes_deployment" "this" {
     annotations = merge(
       local.annotations,
       var.annotations,
-      var.deployment_annotations
+      var.deployment_annotations,
+      {
+        "configuration_annotation_prefix" = var.annotations_prefix
+        "configuration_ingress_class"     = var.ingress_class
+      },
     )
     labels = merge(
       {

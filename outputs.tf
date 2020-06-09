@@ -46,3 +46,13 @@ output "load_balancer_ingress" {
   description = "List of ingress points for the load-balancer."
   value       = kubernetes_service.this.load_balancer_ingress
 }
+
+output "ingress_class" {
+  description = "Ingress-class to be used by this ingress controller."
+  value       = kubernetes_deployment.this.metadata.0.annotations.configuration_ingress_class
+}
+
+output "annotation_prefix" {
+  description = "Annotation prefix to be used by this ingress controller."
+  value       = kubernetes_deployment.this.metadata.0.annotations.configuration_annotation_prefix
+}
