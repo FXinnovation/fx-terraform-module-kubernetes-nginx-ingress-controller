@@ -1,3 +1,9 @@
+1.2.1
+=====
+
+  * chore: Update pre-commit config
+  * fix: warning on interpolated syntax
+
 1.2.0
 =====
 
