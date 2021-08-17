@@ -3,6 +3,7 @@
 =====
 
   * feat (BREAKING): Update to version 2.x for kubernetes provider
+  * chore: Update pre-commit config
 
 1.2.1
 =====
