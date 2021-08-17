@@ -44,7 +44,7 @@ output "config_map_udp_services" {
 
 output "load_balancer_ingress" {
   description = "List of ingress points for the load-balancer."
-  value       = kubernetes_service.this.load_balancer_ingress
+  value       = kubernetes_service.this.status.0.load_balancer.0.ingress
 }
 
 output "ingress_class" {

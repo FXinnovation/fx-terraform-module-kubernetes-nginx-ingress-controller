@@ -1,3 +1,9 @@
+
+1.3.0
+=====
+
+  * feat (BREAKING): Update to version 2.x for kubernetes provider
+
 1.2.1
 =====
 
