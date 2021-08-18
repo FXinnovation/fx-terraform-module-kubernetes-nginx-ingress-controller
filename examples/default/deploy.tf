@@ -368,7 +368,7 @@ resource "kubernetes_daemonset" "speaker" {
           }
 
           resources {
-            limits {
+            limits = {
               cpu    = "100m"
               memory = "100Mi"
             }
@@ -448,7 +448,7 @@ resource "kubernetes_deployment" "controller" {
           }
 
           resources {
-            limits {
+            limits = {
               cpu    = "100m"
               memory = "100Mi"
             }
