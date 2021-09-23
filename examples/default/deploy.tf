@@ -1,15 +1,4 @@
 #####
-# Providers
-#####
-
-provider "random" {
-}
-
-provider "kubernetes" {
-  config_path = "~/.kube/config"
-}
-
-#####
 # Randoms
 #####
 
@@ -19,6 +8,7 @@ resource "random_string" "default" {
   special = false
   length  = 8
 }
+
 
 #####
 # MetalLB
@@ -492,8 +482,9 @@ resource "kubernetes_secret" "memberlist" {
   type = "Opaque"
 }
 
+
 #####
-# default example
+# Default example
 #####
 
 module "default" {
