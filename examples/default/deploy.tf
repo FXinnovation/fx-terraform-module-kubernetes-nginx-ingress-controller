@@ -35,6 +35,13 @@ resource "kubernetes_namespace" "metallb_system" {
       app = "metallb"
     }
   }
+
+  # for some reasons, the build can fail while attempting to
+  # delete the namespace. since the default timeout is 5m
+  # we will use 10m for this purpose, as a workaround.
+  timeouts {
+    delete = "30m"
+  }
 }
 
 resource "kubernetes_service_account" "controller" {
