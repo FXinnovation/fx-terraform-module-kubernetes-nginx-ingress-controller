@@ -12,6 +12,7 @@ variable "labels" {
   default     = {}
 }
 
+
 #####
 # Namespace
 #####
@@ -30,6 +31,7 @@ variable "namespace_labels" {
   description = "Map of labels to apply to the namespace."
   default     = {}
 }
+
 
 #####
 # Config Maps
@@ -105,6 +107,7 @@ variable "udp_services_data" {
   default     = {}
 }
 
+
 #####
 # Service Accounts
 #####
@@ -123,6 +126,7 @@ variable "service_account_labels" {
   description = "Map of labels to apply to the service account."
   default     = {}
 }
+
 
 #####
 # Role
@@ -158,6 +162,7 @@ variable "role_binding_labels" {
   default     = {}
 }
 
+
 #####
 # Cluster role
 #####
@@ -191,6 +196,7 @@ variable "cluster_role_binding_labels" {
   description = "Map of labels to apply to the cluster role binding."
   default     = {}
 }
+
 
 #####
 # Deployment
@@ -268,6 +274,7 @@ variable "controller_host_port" {
   default     = null
   type        = number
 }
+
 
 #####
 # Service

@@ -9,6 +9,7 @@ resource "random_string" "selector" {
   length  = 8
 }
 
+
 #####
 # Locals
 #####
@@ -24,6 +25,7 @@ locals {
   }
   controller_port = 10254
 }
+
 
 #####
 # Namespace
@@ -44,6 +46,7 @@ resource "kubernetes_namespace" "this" {
     )
   }
 }
+
 
 #####
 # Config Maps
@@ -121,6 +124,7 @@ resource "kubernetes_config_map" "udp_services" {
   data = var.udp_services_data
 }
 
+
 #####
 # Service Accounts
 #####
@@ -146,6 +150,7 @@ resource "kubernetes_service_account" "this" {
 
   automount_service_account_token = true
 }
+
 
 #####
 # Cluster Role
@@ -238,6 +243,7 @@ resource "kubernetes_cluster_role_binding" "this" {
   }
 }
 
+
 #####
 # Role
 #####
@@ -319,6 +325,7 @@ resource "kubernetes_role_binding" "this" {
     namespace = kubernetes_namespace.this.metadata.0.name
   }
 }
+
 
 #####
 # Deployments
@@ -488,6 +495,7 @@ resource "kubernetes_deployment" "this" {
     }
   }
 }
+
 
 #####
 # Services
