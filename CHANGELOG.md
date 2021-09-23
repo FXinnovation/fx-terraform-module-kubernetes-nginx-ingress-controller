@@ -1,3 +1,17 @@
+2.0.0
+=====
+
+* (BREAKING) chore: pins `pre-commit-hooks` to `v4.0.1`.
+* (BREAKING) chore: pins `kubernetes` provider to `2.x+`.
+* (BREAKING) chore: pins `random` provider to `3.x+`.
+* feat: add `pre-commit-afcmf` (`v0.1.2`).
+* chore: pins `pre-commit-terraform` to `v1.50.0`.
+* refactor: default example
+  * add providers.tf file
+  * add versions.tf file
+  * add README.md file
+  * lint code
+* fix: `LICENSE` file.
 
 1.3.0
 =====
