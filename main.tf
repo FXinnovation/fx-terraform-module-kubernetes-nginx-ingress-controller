@@ -468,7 +468,8 @@ resource "kubernetes_deployment" "this" {
           }
 
           security_context {
-            run_as_user                = 33
+            # required change which is causing issues: https://github.com/kubernetes/ingress-nginx/issues/4942
+            run_as_user                = 101
             allow_privilege_escalation = true
             # TODO: This should be added but the terraform kubernetes provider is not yet compatible. This should be uncommented once the provider enables this feature.
             # capability {
