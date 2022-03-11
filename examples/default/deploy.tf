@@ -48,7 +48,7 @@ resource "random_string" "default" {
 #####
 
 module "aks_cluster" {
-  source = "git::https://git@scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azurerm-aks.git?ref=0.1.0"
+  source = "git::https://git@github.com/FXinnovation/fx-terraform-module-azurerm-aks.git?ref=0.1.0"
 
   resource_group_name                   = random_string.default.result
   location                              = "canadacentral"
