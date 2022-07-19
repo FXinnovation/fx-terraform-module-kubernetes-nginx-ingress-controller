@@ -15,7 +15,7 @@ provider "kubernetes" {
 
 resource "random_string" "default" {
   upper   = false
-  number  = false
+  numeric = false
   special = false
   length  = 8
 }
